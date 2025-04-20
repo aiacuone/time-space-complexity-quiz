@@ -52,10 +52,10 @@ function App() {
               </svg>
             )}
           </button>
-          <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
             Time & Space Complexity Game
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+          <p className="text-md sm:text-lg text-gray-600 dark:text-gray-300 mb-8">
             Analyze the code and guess its time and space complexity
           </p>
           <ComplexityGame />
