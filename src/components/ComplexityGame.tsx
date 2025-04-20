@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
+import ExplanationModal from './ExplanationModal';
 
 interface CodeQuestion {
   code: string;
@@ -181,6 +182,7 @@ const ComplexityGame: React.FC = () => {
   const [selectedSpaceComplexity, setSelectedSpaceComplexity] = useState('');
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     Prism.highlightAll();
@@ -282,15 +284,7 @@ const ComplexityGame: React.FC = () => {
           </div>
         </div>
 
-        {!showResult ? (
-          <button
-            onClick={checkAnswer}
-            disabled={!selectedTimeComplexity || !selectedSpaceComplexity}
-            className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-md transition-colors"
-          >
-            Check Answer
-          </button>
-        ) : (
+        {showResult ? (
           <div className="mt-4">
             <div
               className={`text-xl font-semibold mb-4 ${
@@ -313,6 +307,15 @@ const ComplexityGame: React.FC = () => {
             <p className="text-neutral-600 dark:text-neutral-400 mb-4">
               {currentQuestion.explanation}
             </p>
+            {selectedTimeComplexity !== currentQuestion.timeComplexity ||
+            selectedSpaceComplexity !== currentQuestion.spaceComplexity ? (
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="w-full py-2 px-4 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-md transition-colors mb-4"
+              >
+                View Detailed Explanation
+              </button>
+            ) : null}
             {currentQuestionIndex < questions.length - 1 ? (
               <button
                 onClick={nextQuestion}
@@ -334,8 +337,25 @@ const ComplexityGame: React.FC = () => {
               </div>
             )}
           </div>
+        ) : (
+          <button
+            onClick={checkAnswer}
+            disabled={!selectedTimeComplexity || !selectedSpaceComplexity}
+            className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-md transition-colors"
+          >
+            Check Answer
+          </button>
         )}
       </div>
+
+      <ExplanationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        timeComplexity={currentQuestion.timeComplexity}
+        spaceComplexity={currentQuestion.spaceComplexity}
+        explanation={currentQuestion.explanation}
+        code={currentQuestion.code}
+      />
     </div>
   );
 };
