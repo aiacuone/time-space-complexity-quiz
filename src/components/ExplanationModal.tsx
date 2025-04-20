@@ -28,7 +28,7 @@ const ExplanationModal: React.FC<ExplanationModalProps> = ({
         apiKey: process.env.REACT_APP_GEMINI_API_KEY,
       });
 
-      const prompt = `Please explain in simple, layman's terms what a ${timeComplexity} time complexity and ${spaceComplexity} space complexity mean for this code:\n\n${code}\n\nFocus on making it very easy to understand for beginners. Use analogies if helpful.`;
+      const prompt = `Please explain what ${timeComplexity} time complexity and ${spaceComplexity} space complexity mean for this code:\n\n${code}\n\nFocus on making it very easy to understand for beginners. Use analogies if helpful.`;
 
       const response = await ai.models.generateContent({
         model: 'gemini-2.0-flash',
