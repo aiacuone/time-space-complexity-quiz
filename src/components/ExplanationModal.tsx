@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { GoogleGenAI } from '@google/genai';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism-tomorrow.css';
 
 interface ExplanationModalProps {
   isOpen: boolean;
@@ -20,6 +22,12 @@ const ExplanationModal: React.FC<ExplanationModalProps> = ({
 }) => {
   const [geminiResponse, setGeminiResponse] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      Prism.highlightAll();
+    }
+  }, [isOpen]);
 
   const askGemini = async () => {
     setIsLoading(true);
@@ -145,7 +153,7 @@ const ExplanationModal: React.FC<ExplanationModalProps> = ({
               Code
             </h3>
             <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto">
-              <code className="text-sm text-gray-100">{code}</code>
+              <code className="language-javascript">{code}</code>
             </pre>
           </div>
 
