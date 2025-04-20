@@ -150,6 +150,143 @@ const allQuestions: CodeQuestion[] = [
     explanation:
       'A simple modulo operation that takes constant time and space regardless of input size.',
   },
+  {
+    code: `function matrixMultiplication(A, B) {
+  const n = A.length;
+  const result = Array(n).fill().map(() => Array(n).fill(0));
+  
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      for (let k = 0; k < n; k++) {
+        result[i][j] += A[i][k] * B[k][j];
+      }
+    }
+  }
+  return result;
+}`,
+    timeComplexity: 'O(n³)',
+    spaceComplexity: 'O(n²)',
+    explanation:
+      'Matrix multiplication uses three nested loops for computation and stores an n×n result matrix.',
+  },
+  {
+    code: `function countingSort(arr) {
+  const max = Math.max(...arr);
+  const counts = new Array(max + 1).fill(0);
+  
+  for (const num of arr) {
+    counts[num]++;
+  }
+  
+  const sorted = [];
+  for (let i = 0; i < counts.length; i++) {
+    while (counts[i] > 0) {
+      sorted.push(i);
+      counts[i]--;
+    }
+  }
+  return sorted;
+}`,
+    timeComplexity: 'O(n + k)',
+    spaceComplexity: 'O(k)',
+    explanation:
+      'Counting sort takes O(n + k) time where k is the range of input, and uses O(k) space for the counting array.',
+  },
+  {
+    code: `function powerSet(arr) {
+  const subsets = [[]];
+  
+  for (const item of arr) {
+    const len = subsets.length;
+    for (let i = 0; i < len; i++) {
+      subsets.push([...subsets[i], item]);
+    }
+  }
+  return subsets;
+}`,
+    timeComplexity: 'O(2ⁿ)',
+    spaceComplexity: 'O(2ⁿ)',
+    explanation:
+      'Generating all possible subsets results in 2ⁿ subsets, requiring exponential time and space.',
+  },
+  {
+    code: `function dijkstra(graph, start) {
+  const distances = {};
+  const visited = new Set();
+  const vertices = Object.keys(graph);
+  
+  vertices.forEach(vertex => {
+    distances[vertex] = Infinity;
+  });
+  distances[start] = 0;
+  
+  while (visited.size < vertices.length) {
+    const current = vertices
+      .filter(v => !visited.has(v))
+      .reduce((min, v) => 
+        distances[v] < distances[min] ? v : min
+      );
+      
+    visited.add(current);
+    
+    Object.entries(graph[current]).forEach(([neighbor, weight]) => {
+      const distance = distances[current] + weight;
+      if (distance < distances[neighbor]) {
+        distances[neighbor] = distance;
+      }
+    });
+  }
+  return distances;
+}`,
+    timeComplexity: 'O(n²)',
+    spaceComplexity: 'O(n)',
+    explanation:
+      "Basic Dijkstra's implementation with adjacency list takes O(n²) time due to linear search for minimum distance vertex, and uses O(n) space for distances and visited set.",
+  },
+  {
+    code: `function quickSelect(arr, k) {
+  if (arr.length === 1) return arr[0];
+  
+  const pivot = arr[Math.floor(Math.random() * arr.length)];
+  const left = arr.filter(x => x < pivot);
+  const equal = arr.filter(x => x === pivot);
+  const right = arr.filter(x => x > pivot);
+  
+  if (k < left.length) {
+    return quickSelect(left, k);
+  } else if (k < left.length + equal.length) {
+    return pivot;
+  } else {
+    return quickSelect(right, k - left.length - equal.length);
+  }
+}`,
+    timeComplexity: 'O(n)',
+    spaceComplexity: 'O(n)',
+    explanation:
+      'QuickSelect has average case O(n) time complexity as it only needs to recurse on one partition, but uses O(n) space for partitioning.',
+  },
+  {
+    code: `function longestCommonSubsequence(str1, str2) {
+  const dp = Array(str1.length + 1)
+    .fill()
+    .map(() => Array(str2.length + 1).fill(0));
+    
+  for (let i = 1; i <= str1.length; i++) {
+    for (let j = 1; j <= str2.length; j++) {
+      if (str1[i-1] === str2[j-1]) {
+        dp[i][j] = dp[i-1][j-1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+      }
+    }
+  }
+  return dp[str1.length][str2.length];
+}`,
+    timeComplexity: 'O(n * m)',
+    spaceComplexity: 'O(n * m)',
+    explanation:
+      'LCS uses dynamic programming with a 2D table, requiring O(n*m) time and space where n and m are the lengths of the input strings.',
+  },
 ];
 
 const shuffleArray = (array: CodeQuestion[]): CodeQuestion[] => {
@@ -167,8 +304,10 @@ const complexityOptions = [
   'O(1)',
   'O(log n)',
   'O(n)',
+  'O(n + k)',
   'O(n log n)',
   'O(n²)',
+  'O(n³)',
   'O(2ⁿ)',
   'O(n!)',
 ];
