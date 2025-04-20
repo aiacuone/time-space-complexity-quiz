@@ -8,14 +8,15 @@ An interactive game to practice analyzing time and space complexity of different
 - Multiple choice questions for both time and space complexity
 - Immediate feedback with explanations
 - Score tracking
-- Responsive design
+- Responsive design with Tailwind CSS
+- Modern, clean user interface
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- npm (v6 or higher)
+- Node.js (v16 or higher)
+- npm (v8 or higher)
 
 ### Installation
 
@@ -51,11 +52,28 @@ npm start
 
 ## Technologies Used
 
-- React
-- TypeScript
-- Material-UI
+- React 18
+- TypeScript 4.9+
+- Tailwind CSS 3.4
 - Prism.js for syntax highlighting
+- PostCSS for CSS processing
+
+## Development
+
+The project uses modern web development tools and practices:
+
+- Create React App as the build tool
+- TypeScript for type safety
+- Tailwind CSS for utility-first styling
+- PostCSS for CSS processing
+- ESLint for code linting
 
 ## Contributing
 
-Feel free to submit issues and enhancement requests!
+Feel free to submit issues and enhancement requests! To contribute:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
