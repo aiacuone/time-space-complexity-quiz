@@ -227,9 +227,9 @@ const ComplexityGame: React.FC = () => {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+      <div className="bg-white dark:bg-neutral-700 rounded-lg shadow-lg p-6">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+          <h2 className="text-xl font-semibold text-neutral-900 dark:text-white">
             Question {currentQuestionIndex + 1} of {TOTAL_QUESTIONS}
           </h2>
           <div className="text-xl font-semibold text-blue-600 dark:text-blue-400">
@@ -245,14 +245,14 @@ const ComplexityGame: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
               Time Complexity
             </label>
             <select
               value={selectedTimeComplexity}
               onChange={handleTimeComplexityChange}
               disabled={showResult}
-              className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:opacity-50"
+              className="w-full p-2 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white disabled:opacity-50"
             >
               <option value="">Select Time Complexity</option>
               {complexityOptions.map((option) => (
@@ -263,14 +263,14 @@ const ComplexityGame: React.FC = () => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
               Space Complexity
             </label>
             <select
               value={selectedSpaceComplexity}
               onChange={handleSpaceComplexityChange}
               disabled={showResult}
-              className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:opacity-50"
+              className="w-full p-2 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white disabled:opacity-50"
             >
               <option value="">Select Space Complexity</option>
               {complexityOptions.map((option) => (
@@ -305,12 +305,12 @@ const ComplexityGame: React.FC = () => {
                 ? 'Correct!'
                 : 'Incorrect!'}
             </div>
-            <div className="text-gray-900 dark:text-white mb-2">
+            <div className="text-neutral-900 dark:text-white mb-2">
               Time Complexity: {currentQuestion.timeComplexity}
               <br />
               Space Complexity: {currentQuestion.spaceComplexity}
             </div>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <p className="text-neutral-600 dark:text-neutral-400 mb-4">
               {currentQuestion.explanation}
             </p>
             {currentQuestionIndex < questions.length - 1 ? (
@@ -322,7 +322,7 @@ const ComplexityGame: React.FC = () => {
               </button>
             ) : (
               <div className="text-center">
-                <div className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                <div className="text-2xl font-bold mb-4 text-neutral-900 dark:text-white">
                   Final Score: {score}/{TOTAL_QUESTIONS}
                 </div>
                 <button

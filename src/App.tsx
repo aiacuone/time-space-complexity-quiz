@@ -13,12 +13,12 @@ function App() {
   }, [isDark]);
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 py-8">
+    <div className="min-h-screen bg-neutral-100 dark:bg-neutral-600 py-8">
       <div className="max-w-4xl mx-auto px-4">
         <div className="relative text-center">
           <button
             onClick={() => setIsDark(!isDark)}
-            className="absolute right-0 top-0 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+            className="absolute right-0 top-0 p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-700"
           >
             {isDark ? (
               <svg
@@ -38,7 +38,7 @@ function App() {
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-gray-900"
+                className="h-6 w-6 text-neutral-900"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -52,10 +52,10 @@ function App() {
               </svg>
             )}
           </button>
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white">
             Time & Space Complexity Game
           </h1>
-          <p className="text-md sm:text-lg text-gray-600 dark:text-gray-300 mb-8">
+          <p className="text-md sm:text-lg text-neutral-600 dark:text-neutral-300 mb-8">
             Analyze the code and guess its time and space complexity
           </p>
           <ComplexityGame />
